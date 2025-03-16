@@ -12,6 +12,8 @@ form.addEventListener("submit", (event) => {
     // If inputs are empty
     result.innerText =
       "Division not performed. Both values are required inputs. Try again";
+
+    result.classList.add("error-message");
     return;
   }
 
@@ -24,7 +26,9 @@ form.addEventListener("submit", (event) => {
     }
   } catch (error) {
     console.error(error);
+
     result.innerText = error.message;
+    result.classList.add("error-message");
   }
 
   try {
@@ -35,7 +39,7 @@ form.addEventListener("submit", (event) => {
   } catch (error) {
     console.log(error);
 
-    document.body.innerHTML = `<h1 style="color: red; text-align: center;">
+    document.body.innerHTML = `<h1 class="critical-error">
     Something critical went wrong. Please reload the page.</h1>`;
   }
 });
